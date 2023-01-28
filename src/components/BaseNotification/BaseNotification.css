@@ -1,0 +1,19 @@
+.base-notification-wrapper {
+    padding: 10px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.base-notification-wrapper * {
+    font-family: 'PlusJakartaSans';
+    font-size: 12px;
+}
+
+.base-notification-wrapper-unread {
+    border-radius: 5px;
+    background-color: hsl(211, 68%, 94%);
+}
+
+.base-notification-wrapper:hover {
+    transform: scale(1.01);
+}

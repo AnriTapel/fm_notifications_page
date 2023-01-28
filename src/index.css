@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(210, 60%, 98%);
+}
+
+#root {
+  height: 80%;
+  max-height: 720px;
+  overflow-y: auto;
+  width: 60%;
+  max-width: 680px;
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.notification-container {
+  display: flex;
+}
+
+.notification-author-avatart {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.notification-author-avatart img {
+  width: 36px;
+  height: 36px;
+}
+
+.notification-author-name, .notification-group-name {
+  color: hsl(219, 85%, 26%);
+  font-weight: bold;
+}
+
+.notification-action {
+  color: hsl(219, 14%, 63%);
+  font-weight: light;
+}
+
+.notification-post-title {
+  font-weight: bold;
+  color: hsl(219, 14%, 63%);
+}
+
+.notification-date-block {
+  margin-top: 5px;
+  color: hsl(219, 14%, 63%);
+}
+
+.base-notification-wrapper-unread .notification-title-block::after {
+  content: '';
+  background-color: hsl(1, 90%, 64%);
+  margin-left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 375px) {
+
+  body {
+    align-items: flex-start;
+  }
+
+  #root {
+    height: auto;
+    width: 100%;
+    max-width: unset;
+    max-height: unset;
+    border-radius: unset;
+  }
+
+}

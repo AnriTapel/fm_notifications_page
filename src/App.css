@@ -1,0 +1,56 @@
+h1 {
+    font-family: 'PlusJakartaSans';
+    color: hsl(224, 21%, 14%);
+}
+
+header,  header > div {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    justify-content: space-between;
+}
+
+header > div {
+    gap: 10px;
+}
+
+main > div:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.unread-notifications-counter {
+    font-family: 'PlusJakartaSans';
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: hsl(219, 85%, 26%);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+button {
+    background-color: transparent;
+    border: unset;
+    color: hsl(219, 14%, 63%);
+    font-family: 'PlusJakartaSans';
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    color: hsl(219, 12%, 42%);
+}
+
+@media only screen and (max-width: 375px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .unread-notifications-counter, button {
+        font-size: 12px;
+    }
+
+}

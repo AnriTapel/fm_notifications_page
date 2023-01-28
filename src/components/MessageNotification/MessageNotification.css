@@ -1,0 +1,14 @@
+.message-notification-container {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    grid-gap: 10px;
+}
+
+.notification-message-block {
+    grid-column-start: 2;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid hsl(205, 33%, 90%);
+    color: hsl(219, 14%, 63%);
+    line-height: 18px;
+  }
