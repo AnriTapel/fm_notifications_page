@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { NOTIFICATIONS_DATA } from './model/notificationsData';
 import BaseNotification from './components/BaseNotification/BaseNotification';
 import './App.css';
@@ -8,19 +8,19 @@ function App() {
   const [notifications, setNotifications] = useState(NOTIFICATIONS_DATA);
 
   const markAllAsRead = () => {
-    let newNotifications = [];
-    for (let n of notifications) {
-      n.isRead = true;
-      newNotifications.push(n);
-    }
-    setNotifications(newNotifications);
+    setNotifications(notifications.map(
+      it => {
+        it.isRead = true;
+        return it;
+      })
+    );
   };
 
-  const getUnreadNotificationsCount = () => {
+  const getUnreadNotificationsCount = useMemo(() => {
     return notifications.filter(it => !it.isRead).length;
-  }
+  }, [notifications]);
 
-  const notificationClickHandler = (notification) => {
+  const notificationClickHandler = useCallback((notification) => {
     const index = notifications.findIndex(it => it.id === notification.id);
     if (index < 0) {
       return;
@@ -31,14 +31,14 @@ function App() {
       ...notifications.slice(0, index),
       clickedNotification,
       ...notifications.slice(index + 1)]);
-  }
+  }, [notifications]);
 
   return (
     <div className="page-container">
       <header>
         <div>
           <h1>Notifications</h1>
-          <div className="unread-notifications-counter">{getUnreadNotificationsCount()}</div>
+          <div className="unread-notifications-counter">{getUnreadNotificationsCount}</div>
         </div>
         <button onClick={markAllAsRead}>Mark all as read</button>
       </header>

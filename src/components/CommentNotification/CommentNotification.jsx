@@ -1,20 +1,16 @@
+import { useMemo } from 'react';
 import './CommentNotification.css';
 
 function CommentNotification({notification, avatarUrl, fromNow}) {
 
-    const getActionText = () => {
-        if (notification.imgName) {
-            return 'commented on your picture';
-        }
-        else {
-            return 'commented on you post';
-        }
-    }
+    const actionText = useMemo(() => {
+        return notification.imgName ? 'commented on your picture' : 'commented on you post';
+    }, [notification]);
 
-    const getImgSrc = () => {
+    const imgSrc = useMemo(() => {
         const url = require(`../../assets/images/${notification.imgName}`);
         return <img src={url} alt={notification.imgName}/>
-    }
+    }, [notification])
 
     return (
         <div className="notification-container">
@@ -24,7 +20,7 @@ function CommentNotification({notification, avatarUrl, fromNow}) {
             <div className="notification-content-block">
                 <div className="notification-title-block">
                     <span className="notification-author-name">{notification.author}&nbsp;</span>
-                    <span className="notification-action">{getActionText()}</span>
+                    <span className="notification-action">{actionText}</span>
                 </div>
                 <div className="notification-date-block">
                     <span>{fromNow}</span>
@@ -32,9 +28,7 @@ function CommentNotification({notification, avatarUrl, fromNow}) {
             </div>
             {
                 notification.imgName &&
-                <div className="notification-comment-picture">
-                    {getImgSrc()}
-                </div>
+                <div className="notification-comment-picture">{imgSrc}</div>
             }
             
         </div>

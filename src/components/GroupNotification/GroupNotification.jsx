@@ -1,9 +1,11 @@
+import { useMemo } from "react";
+
 function GroupNotification({notification, avatarUrl, fromNow}) {
 
     const joinActionText = <span className="notification-action">has joined your group&nbsp;</span>
     const leaveActionText = <span className="notification-action">left the group&nbsp;</span>
     
-    const getActionText = () => {
+    const actionText = useMemo(() => {
         switch(notification.type) {
             case 'group_join':
                 return joinActionText;
@@ -12,7 +14,7 @@ function GroupNotification({notification, avatarUrl, fromNow}) {
             default:
                 return <span>&nbsp;</span>    
         }
-    }
+    }, [notification.type])
 
     return (
         <div className="notification-container">
@@ -22,7 +24,7 @@ function GroupNotification({notification, avatarUrl, fromNow}) {
             <div className="notification-content-block">
                 <div className="notification-title-block">
                     <span className="notification-author-name">{notification.author}&nbsp;</span>
-                    {getActionText()}
+                    {actionText}
                     <span className="notification-group-name">{notification.groupName}</span>
                 </div>
                 <div className="notification-date-block">
